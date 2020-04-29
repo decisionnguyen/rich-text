@@ -1,8 +1,17 @@
 {
   "name": "textEditor",
   "version": "0.0.1",
-  "private": true,
-  "main": "dist/index.js",
+  "private": false,
+  "main": "./src/index.tsx",
+  "keywords": [
+    "react-native"
+  ],
+  "author": {
+    "name": "Dinh Pu",
+    "email": "decisionnguyen@gmail.com"
+  },
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
