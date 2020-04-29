@@ -9,6 +9,7 @@ import {
     StartupMessage,
     WebViewBaseJSProps,
 } from './models';
+import _ from 'lodash';
 
 interface State {
     uploadImage: boolean;
@@ -50,7 +51,7 @@ class WebViewBaseJS extends React.PureComponent<WebViewBaseJSProps, State> {
     componentDidUpdate(prevProps: WebViewBaseJSProps) {
         const {content, defaultContent, isReadOnly, showToolBar} = this.props;
         if (content !== prevProps.content) {
-            // this.sendMessage({content});
+            this.sendMessage({content});
             this.receivedContent = content;
         }
         if (showToolBar !== prevProps.showToolBar) {
@@ -71,7 +72,6 @@ class WebViewBaseJS extends React.PureComponent<WebViewBaseJSProps, State> {
         this.setState({uploadImage: true});
         fetch('https://reactnative.dev/movies.json')
             .then((response) => {
-                console.log(response);
                 this.sendMessage({
                     type: 'INSERT_IMAGE',
                     range,
@@ -122,11 +122,11 @@ class WebViewBaseJS extends React.PureComponent<WebViewBaseJSProps, State> {
     };
 
     // Send message to webview
-    private sendMessage = (payload: object) => {
+    private sendMessage = _.debounce((payload: object) => {
         this.webViewRef.injectJavaScript(
             `window.postMessage(${JSON.stringify(payload)}, '*');`,
         );
-    };
+    }, 200);
 
     // Send a startup message with initalizing values to the map
     private sendStartupMessage = () => {

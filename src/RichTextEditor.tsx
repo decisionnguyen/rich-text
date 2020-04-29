@@ -30,6 +30,7 @@ const RichTextEditor = memo((props: Props) => {
 
     }, []);
 
+
     const onMessageReceived = useCallback((message: { msg: string, payload: any }) => {
         const {msg, payload} = message;
         switch (msg) {
@@ -42,13 +43,13 @@ const RichTextEditor = memo((props: Props) => {
                 onBlur && onBlur();
                 break;
             case WebviewBaseJSEvents.ON_FOCUS:
-                onFocus && onFocus()
+                onFocus && onFocus();
                 break;
             default:
                 break;
 
         }
-    }, []);
+    }, [onContentChange, onFocus, onBlur]);
 
     return (
         <View style={styles.container}>
