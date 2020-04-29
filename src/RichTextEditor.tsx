@@ -1,4 +1,4 @@
-import React, {memo, useCallBack, useState} from 'react';
+import React, {memo, useCallback, useState} from 'react';
 import {StyleSheet, Text, TextInput, View, Platform} from 'react-native';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import WebViewBaseJS from "./WebViewBaseJSContainer";
@@ -22,15 +22,15 @@ interface StateInterface {
 const RichTextEditor = memo((props: Props) => {
     const {onFocus, onBlur, content, showToolBar, onContentChange} = props;
 
-    const onLoadEnd = useCallBack(() => {
+    const onLoadEnd = useCallback(() => {
 
     }, []);
 
-    const onLoadStart = useCallBack(() => {
+    const onLoadStart = useCallback(() => {
 
     }, []);
 
-    const onMessageReceived = useCallBack((message: { msg: string, payload: any }) => {
+    const onMessageReceived = useCallback((message: { msg: string, payload: any }) => {
         const {msg, payload} = message;
         switch (msg) {
             case WebviewBaseJSEvents.ON_CHANGE:
