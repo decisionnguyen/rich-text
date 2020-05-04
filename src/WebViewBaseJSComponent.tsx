@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, NativeSyntheticEvent, Platform, View} from 'react-native';
+import {StyleSheet, NativeSyntheticEvent, Platform, View, StatusBar} from 'react-native';
 import {WebView} from 'react-native-webview';
 import {WebViewError} from 'react-native-webview/lib/WebViewTypes';
 
@@ -15,6 +15,10 @@ export interface Props {
 }
 
 class WebViewQuillJSView extends React.Component<Props> {
+    componentWillUnmount() {
+        StatusBar.setBarStyle('dark-content');
+      }
+
     render() {
         const {
             handleMessage,
