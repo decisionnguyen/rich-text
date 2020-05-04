@@ -126,7 +126,7 @@ class WebViewBaseJS extends React.PureComponent<WebViewBaseJSProps, State> {
         this.webViewRef.injectJavaScript(
             `window.postMessage(${JSON.stringify(payload)}, '*');`,
         );
-    }, 200);
+    }, 500);
 
     // Send a startup message with initalizing values to the map
     private sendStartupMessage = () => {
