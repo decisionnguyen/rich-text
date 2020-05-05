@@ -1,6 +1,5 @@
 import React from 'react';
 import {WebView} from 'react-native-webview';
-import ImagePicker from 'react-native-image-picker';
 import WebViewBaseJSComponent from './WebViewBaseJSComponent';
 import ActivityOverlay from './ActivityOverlay';
 import {
