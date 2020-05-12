@@ -151,11 +151,9 @@ class WebViewBaseJS extends React.PureComponent<WebViewBaseJSProps, State> {
     private onLoadEnd = () => {
         this.setState({isLoading: false});
         this.props.onLoadEnd && this.props.onLoadEnd();
-        if (this.props.isCreate) {
-            this.sendMessage({
-                type: 'CREATE_NEW_NOTE',
-            });
-        }
+        this.sendMessage({
+            type: 'ON_LOAD_END',
+        });
     };
 
     private onLoadStart = () => {
