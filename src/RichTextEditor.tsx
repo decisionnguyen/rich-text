@@ -61,7 +61,7 @@ const RichTextEditor = memo((props: Props) => {
                 onLoadEnd={onLoadEnd}
                 onMessageReceived={onMessageReceived}
             />
-            {Platform.OS === 'ios' && <KeyboardSpacer/>}
+            {/*{Platform.OS === 'ios' && <KeyboardSpacer/>}*/}
         </View>
     );
 });
