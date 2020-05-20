@@ -12,11 +12,11 @@ import {
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 
-import CNEditor,  {
+import CNRichTextEditor, {
     CNToolbar,
     getDefaultStyles,
     getInitialObject,
-} from './index';
+} from 'react-native-cn-richtext-editor';
 
 import {
     Menu,
@@ -35,7 +35,7 @@ import {
     IC_FORMAT_PHOTO,
     IC_FORMAT_STRIKE,
     IC_FORMAT_UNDERLINE, IC_LIST_BULLET, IC_LIST_NUMBER,
-} from './icons/icons';
+} from './assets/icons/icons';
 
 const {SlideInMenu} = renderers;
 
@@ -68,20 +68,14 @@ class WrapRichText extends Component {
             colors: ['red', 'green', 'blue', 'black'],
             highlights: ['yellow_hl', 'pink_hl', 'orange_hl', 'green_hl', 'purple_hl', 'blue_hl'],
             selectedStyles: [],
-            value: ""
+            value: "ok men" // get empty editor
+            // value: convertToObject('<div><p> </p></div>'),
         };
 
         this.editor = null;
 
     }
 
-    componentDidMount() {
-        if (this.props.value) {
-            this.setState({
-                value: this.props.value
-            })
-        }
-    }
     onStyleKeyPress = (toolType) => {
 
         if (toolType == 'image') {
@@ -423,14 +417,13 @@ class WrapRichText extends Component {
         return (
             <KeyboardAvoidingView
                 enabled
-                keyboardVerticalOffset={IS_IOS ? 0 : 0}
                 style={styles.root}
                 behavior={'padding'}
             >
                 <MenuProvider style={styles.container}>
                     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                         <View style={styles.main}>
-                            <CNEditor
+                            <CNRichTextEditor
                                 ref={input => this.editor = input}
                                 onSelectedTagChanged={this.onSelectedTagChanged}
                                 onSelectedStyleChanged={this.onSelectedStyleChanged}
@@ -447,16 +440,23 @@ class WrapRichText extends Component {
                     <View style={styles.toolbarContainer}>
 
                         <CNToolbar
-                            style={styles.toolbarStyle}
-                            iconSetContainerStyle={styles.iconSetContainerStyle}
+                            style={{
+                                height: 35,
+                            }}
+                            iconSetContainerStyle={{
+                                flexGrow: 1,
+                                justifyContent: 'space-evenly',
+                                alignItems: 'center',
+                            }}
                             size={28}
                             iconSet={iconSet}
                             selectedTag={this.state.selectedTag}
                             selectedStyles={this.state.selectedStyles}
                             onStyleKeyPress={this.onStyleKeyPress}
-                            backgroundColor={defaultBackgroundColorBtn} // optional (will override default backgroundColor)
+                            backgroundColor="aliceblue" // optional (will override default backgroundColor)
                             color="gray" // optional (will override default color)
-                            selectedBackgroundColor={defaultSelectedBackgroundColorBtn} // optional (will override default selectedBackgroundColor)
+                            selectedColor='white' // optional (will override default selectedColor)
+                            selectedBackgroundColor='deepskyblue' // optional (will override default selectedBackgroundColor)
                         />
                     </View>
                 </MenuProvider>
@@ -470,10 +470,6 @@ const toolbarActionWidth = 28;
 var styles = StyleSheet.create({
     root: {
         flex: 1,
-        paddingTop: 20,
-        backgroundColor: '#eee',
-        flexDirection: 'column',
-        justifyContent: 'flex-end',
     },
     container: {
         flex: 1,
