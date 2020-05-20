@@ -10,7 +10,7 @@ export default class CNEditor extends Component {
         super(props);
         this.isInit = false;
         this.state = {
-            layoutWidth: 400, 
+            layoutWidth: 400,
           };
         this.webViewRef = null;
         this._resolve = null;
@@ -24,11 +24,11 @@ export default class CNEditor extends Component {
          ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
          ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
        }
-    
+
     onMessage = (event) => {
         try {
             const { styleList } = this.props;
-            const message = JSON.parse(event.nativeEvent.data);                        
+            const message = JSON.parse(event.nativeEvent.data);
             switch (message.type) {
                 case 'getHtml':
                     if(this._resolve) {
@@ -47,7 +47,7 @@ export default class CNEditor extends Component {
                         if(highlightHex.startsWith('rgb')) {
                             highlightHex  = this.rgb2hex(highlightHex);
                         }
-                                                
+
                         switch (colorHex) {
                             case styleList['red'].color:
                                 styles.push('red');
@@ -89,19 +89,19 @@ export default class CNEditor extends Component {
                         }
                         this.onSelectedStyleChanged(styles);
                     break;
-                    case 'selectedTag':                        
+                    case 'selectedTag':
                         this.onSelectedTagChanged(message.data);
                     break;
-                    
-		    case 'onChange':                        
+
+		    case 'onChange':
                         this.onValueChanged(message.data);
                     break;
-			    
+
                     break;
                 default:
                     break;
             }
-            
+
         } catch (error) {
 
         }
@@ -118,18 +118,18 @@ export default class CNEditor extends Component {
             Image.getSize(url, (width, height) => {
               width = width;
               height = height;
-              
+
               myHeight = (this.state.layoutWidth - 4 < width) ? height * ((this.state.layoutWidth - 4) / width) : height;
               myWidth = (this.state.layoutWidth - 4 < width) ? this.state.layoutWidth - 4 : width;
-            
+
               const jsonString = JSON.stringify({ type: 'toolbar', command: 'image', value: {
                 url, id: id || shortid.generate(), height: myHeight, width: myWidth, alt, align
                 }
             });
-    
-            if (this.webViewRef) {            
+
+            if (this.webViewRef) {
                 this.webViewRef.postMessage(jsonString);
-            } 
+            }
             });
         }
         else {
@@ -139,13 +139,13 @@ export default class CNEditor extends Component {
                 url, id: id || shortid.generate(), height: myHeight, width: myWidth, alt, align
                 }
             });
-    
-            if (this.webViewRef) {            
+
+            if (this.webViewRef) {
                 this.webViewRef.postMessage(jsonString);
-            } 
-        }  
-        
-        
+            }
+        }
+
+
       }
 
     onSelectedStyleChanged = (styles) => {
@@ -153,7 +153,7 @@ export default class CNEditor extends Component {
           this.props.onSelectedStyleChanged(styles);
         }
       }
-  
+
     onSelectedTagChanged = (tag) => {
         if (this.props.onSelectedTagChanged) {
             this.props.onSelectedTagChanged(tag);
@@ -164,7 +164,7 @@ export default class CNEditor extends Component {
       if(this.props.initialHtml) {
           this.setHtml(this.props.initialHtml);
       }
-    
+
       if(this.props.editorStyle)
           this.applyEditorStyle(this.props.editorStyle);
 
@@ -174,7 +174,7 @@ export default class CNEditor extends Component {
 
     onLayout = (event) => {
         const { width } = event.nativeEvent.layout;
-        
+
         this.setState({
           layoutWidth: width,
         });
@@ -194,37 +194,37 @@ export default class CNEditor extends Component {
             jsonString = JSON.stringify({ type: 'toolbar', command: tool  });
         }
 
-        if (this.webViewRef) {            
+        if (this.webViewRef) {
             this.webViewRef.postMessage(jsonString);
-        } 
-    } 
+        }
+    }
 
     focus = () => {
-        const jsonString = JSON.stringify({ type: 'editor', command: 'focus'  }); 
+        const jsonString = JSON.stringify({ type: 'editor', command: 'focus'  });
 
-        if (this.webViewRef) {            
+        if (this.webViewRef) {
             this.webViewRef.postMessage(jsonString);
-        } 
+        }
     }
 
     setHtml = (htmlString) => {
-        const jsonString = JSON.stringify({ type: 'editor', command: 'setHtml', 
-        value: htmlString  }); 
+        const jsonString = JSON.stringify({ type: 'editor', command: 'setHtml',
+        value: htmlString  });
 
-        if (this.webViewRef) {            
+        if (this.webViewRef) {
             this.webViewRef.postMessage(jsonString);
-        } 
+        }
     }
 
     setPlaceholder = (placeholder) => {
-        const jsonString = JSON.stringify({ type: 'editor', command: 'placeholder', 
-        value: placeholder  }); 
+        const jsonString = JSON.stringify({ type: 'editor', command: 'placeholder',
+        value: placeholder  });
 
-        if (this.webViewRef) {            
+        if (this.webViewRef) {
             this.webViewRef.postMessage(jsonString);
-        } 
+        }
     }
-    
+
     onValueChanged = (data) => {
         if(this.props.onValueChanged) {
             this.props.onValueChanged(data);
@@ -232,24 +232,24 @@ export default class CNEditor extends Component {
     }
 
     applyEditorStyle = (styleString) => {
-        const jsonString = JSON.stringify({ type: 'editor', command: 'style', value: styleString  });         
-        if (this.webViewRef) {            
+        const jsonString = JSON.stringify({ type: 'editor', command: 'style', value: styleString  });
+        if (this.webViewRef) {
             this.webViewRef.postMessage(jsonString);
-        } 
+        }
     }
-    
-    
-    blur = () => {
-        const jsonString = JSON.stringify({ type: 'editor', command: 'blur'  }); 
 
-        if (this.webViewRef) {            
+
+    blur = () => {
+        const jsonString = JSON.stringify({ type: 'editor', command: 'blur'  });
+
+        if (this.webViewRef) {
             this.webViewRef.postMessage(jsonString);
-        } 
+        }
     }
 
     getHtml = () => {
         if(this.resolve) return;
-        const _this = this; 
+        const _this = this;
 
         return new Promise(function(resolve, reject) {
               _this.applyGetContent(resolve);
@@ -267,7 +267,7 @@ export default class CNEditor extends Component {
     return (
         <View style={styles.container}
         onLayout={this.onLayout}>
-            <WebView 
+            <WebView
             style={styles.webView}
             ref={webView=> this.webViewRef = webView}
             onLoad={this.onLoad}
@@ -277,11 +277,12 @@ export default class CNEditor extends Component {
             allowFileAccessFromFileURLs={true}
             keyboardDisplayRequiresUserAction={keyboardDisplayRequiresUserAction}
             javaScriptEnabled={true}
-            source={{ html: htmlEditorString}} 
-            domStorageEnabled={true}
+            source={{ html: htmlEditorString}}
             mixedContentMode='always'
             onMessage={this.onMessage}
 			renderError={(error)=>console.log('error:',error)}
+            showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}
             />
         </View>
     );
