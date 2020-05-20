@@ -434,7 +434,7 @@ class WrapRichText extends Component {
                                 ref={input => this.editor = input}
                                 onSelectedTagChanged={this.onSelectedTagChanged}
                                 onSelectedStyleChanged={this.onSelectedStyleChanged}
-                                value={this.state.value}
+                                initialHtml={this.state.value}
                                 style={styles.editor}
                                 styleList={this.customStyles}
                                 onValueChanged={this.onValueChanged}
