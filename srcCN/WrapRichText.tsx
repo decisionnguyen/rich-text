@@ -12,11 +12,11 @@ import {
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 
-import CNRichTextEditor, {
+import CNEditor,  {
     CNToolbar,
     getDefaultStyles,
     getInitialObject,
-} from 'react-native-cn-richtext-editor';
+} from './index';
 
 import {
     Menu,
@@ -35,7 +35,7 @@ import {
     IC_FORMAT_PHOTO,
     IC_FORMAT_STRIKE,
     IC_FORMAT_UNDERLINE, IC_LIST_BULLET, IC_LIST_NUMBER,
-} from './assets/icons/icons';
+} from './icons/icons';
 
 const {SlideInMenu} = renderers;
 
@@ -68,14 +68,20 @@ class WrapRichText extends Component {
             colors: ['red', 'green', 'blue', 'black'],
             highlights: ['yellow_hl', 'pink_hl', 'orange_hl', 'green_hl', 'purple_hl', 'blue_hl'],
             selectedStyles: [],
-            value: "ok men" // get empty editor
-            // value: convertToObject('<div><p> </p></div>'),
+            value: ""
         };
 
         this.editor = null;
 
     }
 
+    componentDidMount() {
+        if (this.props.value) {
+            this.setState({
+                value: this.props.value
+            })
+        }
+    }
     onStyleKeyPress = (toolType) => {
 
         if (toolType == 'image') {
@@ -423,7 +429,7 @@ class WrapRichText extends Component {
                 <MenuProvider style={styles.container}>
                     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                         <View style={styles.main}>
-                            <CNRichTextEditor
+                            <CNEditor
                                 ref={input => this.editor = input}
                                 onSelectedTagChanged={this.onSelectedTagChanged}
                                 onSelectedStyleChanged={this.onSelectedStyleChanged}
@@ -440,23 +446,16 @@ class WrapRichText extends Component {
                     <View style={styles.toolbarContainer}>
 
                         <CNToolbar
-                            style={{
-                                height: 35,
-                            }}
-                            iconSetContainerStyle={{
-                                flexGrow: 1,
-                                justifyContent: 'space-evenly',
-                                alignItems: 'center',
-                            }}
+                            style={styles.toolbarStyle}
+                            iconSetContainerStyle={styles.iconSetContainerStyle}
                             size={28}
                             iconSet={iconSet}
                             selectedTag={this.state.selectedTag}
                             selectedStyles={this.state.selectedStyles}
                             onStyleKeyPress={this.onStyleKeyPress}
-                            backgroundColor="aliceblue" // optional (will override default backgroundColor)
+                            backgroundColor={defaultBackgroundColorBtn} // optional (will override default backgroundColor)
                             color="gray" // optional (will override default color)
-                            selectedColor='white' // optional (will override default selectedColor)
-                            selectedBackgroundColor='deepskyblue' // optional (will override default selectedBackgroundColor)
+                            selectedBackgroundColor={defaultSelectedBackgroundColorBtn} // optional (will override default selectedBackgroundColor)
                         />
                     </View>
                 </MenuProvider>
