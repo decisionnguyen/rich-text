@@ -52,7 +52,7 @@ interface Props {
     value: string,
     onValueChanged?: (value: string) => void,
     placeHolder?: string,
-    toolbarItem?: string[], // ['bold', 'italic', 'underline', 'lineThrough', 'h1', 'h2', 'ul', 'ol', 'image', 'color']
+    toolbarItem?: string[], // ['bold', 'italic', 'underline', 'lineThrough', 'h1', 'h2', 'ul', 'ol', 'image', 'color', 'P']
     onInsertImage?: (uri: string) => void,
     autoFocus?: boolean,
 
@@ -144,6 +144,16 @@ const initIconSet = {
                 toolTypeText: 'heading',
                 buttonTypes: 'tag',
                 iconComponent: <Text style={styleActionText}>H2</Text>,
+            },
+        ],
+    },
+    'p': {
+        type: 'tool',
+        iconArray: [
+            {
+                toolTypeText: 'body',
+                buttonTypes: 'tag',
+                iconComponent: <Text style={styleActionText}>P</Text>,
             },
         ],
     },
