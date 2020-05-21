@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {
-    View, StyleSheet,
+    View,
+    StyleSheet,
     Keyboard,
+    StatusBar,
     TouchableWithoutFeedback,
     Text,
     Dimensions,
@@ -225,7 +227,23 @@ class WrapRichText extends Component<Props, State> {
         if (this.props.autoFocus) {
             this.editor && this.editor.focus()
         }
+        Keyboard.addListener('keyboardWillShow', this.onKeyboardShowHide);
+        Keyboard.addListener('keyboardWillHide', this.onKeyboardShowHide);
+        StatusBar.setBarStyle('dark-content');
     };
+
+    componentWillUnmount() {
+        Keyboard.removeListener('keyboardWillShow', this.onKeyboardShowHide);
+        Keyboard.removeListener('keyboardWillHide', this.onKeyboardShowHide);
+        StatusBar.setBarStyle('dark-content');
+    }
+
+    onKeyboardShowHide = () => {
+        setTimeout(() => {
+            StatusBar.setBarStyle('dark-content');
+        }, 100)
+    };
+
 
     onStyleKeyPress = (toolType) => {
 
