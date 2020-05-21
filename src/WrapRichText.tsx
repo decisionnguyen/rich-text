@@ -35,7 +35,7 @@ import {
     IC_FORMAT_PHOTO,
     IC_FORMAT_STRIKE,
     IC_FORMAT_UNDERLINE, IC_LIST_BULLET, IC_LIST_NUMBER,
-} from './assets/icons/icons';
+} from './icons/icons';
 
 const {SlideInMenu} = renderers;
 
