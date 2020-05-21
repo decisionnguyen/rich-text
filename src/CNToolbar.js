@@ -4,14 +4,13 @@ import {
     TouchableWithoutFeedback,
     TouchableHighlight,
     Text,
-    StyleSheet,
-    ScrollView
+    StyleSheet,ScrollView
 } from 'react-native'
 
 import { CNSeperator } from './CNSeperator'
 import { CNToolbarIcon } from './CNToolbarIcon'
 import { CNToolbarSetIcon } from './CNToolbarSetIcon'
-const defaultColor = '#737373'
+const defaultColor = '#333333'
 const defaultBgColor = '#fff'
 const defaultSelectedColor = '#2a2a2a'
 const defaultSelectedBgColor = '#e4e4e4'
@@ -37,10 +36,10 @@ class CNToolbar extends Component {
             || this.props.image
             || this.props.highlight
             || this.props.foreColor
-            ) {
-                console.warn('CNToolbar: using `bold`, `italic`, `underline`, `lineThrough`, `body`, `title`, `heading`, `ul`, `ol`, `image`, `highlight` or `foreColor` is deprecated. You may use `iconSet` prop instead (>= 1.0.41)')
-            }
+        ) {
+            console.warn('CNToolbar: using `bold`, `italic`, `underline`, `lineThrough`, `body`, `title`, `heading`, `ul`, `ol`, `image`, `highlight` or `foreColor` is deprecated. You may use `iconSet` prop instead (>= 1.0.41)')
         }
+    }
 
     onStyleKeyPress = (toolItem) => {
         if (this.props.onStyleKeyPress) this.props.onStyleKeyPress(toolItem);
@@ -70,6 +69,9 @@ class CNToolbar extends Component {
                     showsHorizontalScrollIndicator={false}>
                     {
                         iconSet.map((object, index) => {
+                            if (!object) {
+                                return <View />
+                            }
                             return (
                                 object.type !== 'seperator' &&
                                 object.iconArray &&
