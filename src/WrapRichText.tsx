@@ -528,7 +528,7 @@ var styles = StyleSheet.create({
         flex: 1,
     },
     toolbarStyle: {
-        height: 35,
+        height: 40,
     },
     iconSetContainerStyle: {
         flexGrow: 1,
@@ -545,7 +545,7 @@ var styles = StyleSheet.create({
     },
     editor: {},
     toolbarContainer: {
-        minHeight: 35,
+        minHeight: 40,
     },
     menuOptionText: {
         textAlign: 'center',
