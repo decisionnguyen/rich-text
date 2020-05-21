@@ -51,6 +51,22 @@ const editorHTML = `
            padding-top: 10px;
         }
 
+        p {
+            margin-top: 4px !important;
+            margin-bottom: 4px !important;
+        }
+        
+        ol {
+            margin-top: 4px !important;
+            margin-bottom: 4px !important;
+        }
+        
+        ul {
+            margin-top: 4px !important;
+            margin-bottom: 4px !important;
+        }
+        
+        
         #editor:focus {
           outline: 0px solid transparent;
         }
