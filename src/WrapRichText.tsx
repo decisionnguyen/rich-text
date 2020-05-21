@@ -57,7 +57,15 @@ interface Props {
 }
 
 interface State {
-
+    selectedTag: string,
+    selectedColor: string,
+    selectedHighlight: string,
+    colors: string[],
+    highlights: string[],
+    selectedStyles: any[],
+    value: string,
+    placeholder: string,
+    iconSet: any[]
 }
 
 const styleBtnAction = {
@@ -161,7 +169,6 @@ const initIconSet = {
 
 class WrapRichText extends Component<Props, State> {
     private readonly customStyles: any;
-    private state: any;
     private editor: null;
 
     constructor(props) {
