@@ -49,6 +49,11 @@ const editorHTML = `
            flex-grow: 1;
            height: 100%;
            padding-top: 10px;
+           overflow-y: scroll;
+        }
+
+        #editor::-webkit-scrollbar {
+           display: none;
         }
 
         p {
