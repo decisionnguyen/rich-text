@@ -1,3 +1,3 @@
-import RichTextEditor from './srcCN/WrapRichText';
+import RichTextEditor from './src/WrapRichText';
 
 export {RichTextEditor}

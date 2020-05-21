@@ -1,10 +1,6 @@
-import React, { Component } from 'react'
+import React  from 'react'
 import {
     View,
-    TouchableWithoutFeedback,
-    TouchableHighlight,
-    Text,
-    StyleSheet
 } from 'react-native'
 import { CNToolbarIcon } from './CNToolbarIcon'
 
@@ -21,15 +17,19 @@ export const CNToolbarSetIcon = (props) => {
         iconSetContainerStyle,
         iconStyles,
         onStyleKeyPress
-    } = props
+    } = props;
+
     return (
         <View style={iconSetContainerStyle}>
             {iconArray.map((object, index) => {
+                if (!object) {
+                    return <View />
+                }
                 const {
                     toolTypeText,
                     iconComponent,
                     buttonTypes
-                } = object
+                } = object;
                 return (
                     <CNToolbarIcon
                         key={index}

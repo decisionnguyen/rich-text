@@ -1,19 +1,15 @@
 import React, { Component } from 'react'
 import {
     View,
-    TouchableWithoutFeedback,
-    TouchableHighlight,
-    Text,
     StyleSheet,ScrollView
 } from 'react-native'
 
 import { CNSeperator } from './CNSeperator'
-import { CNToolbarIcon } from './CNToolbarIcon'
 import { CNToolbarSetIcon } from './CNToolbarSetIcon'
-const defaultColor = '#333333'
-const defaultBgColor = '#fff'
-const defaultSelectedColor = '#2a2a2a'
-const defaultSelectedBgColor = '#e4e4e4'
+const defaultColor = '#333333';
+const defaultBgColor = '#fff';
+const defaultSelectedColor = '#2a2a2a';
+const defaultSelectedBgColor = '#e4e4e4';
 const defaultSize = 16;
 
 class CNToolbar extends Component {
@@ -23,7 +19,7 @@ class CNToolbar extends Component {
 
     componentDidMount() {
         if(!this.props.iconSet)
-            console.warn('CNToolbar requires `iconSet` prop to display icons (>= 1.0.41). Please check documentation on github.')
+            console.warn('CNToolbar requires `iconSet` prop to display icons (>= 1.0.41). Please check documentation on github.');
         if(this.props.bold
             || this.props.italic
             || this.props.underline
@@ -43,7 +39,7 @@ class CNToolbar extends Component {
 
     onStyleKeyPress = (toolItem) => {
         if (this.props.onStyleKeyPress) this.props.onStyleKeyPress(toolItem);
-    }
+    };
 
     render() {
         const {

@@ -1,10 +1,7 @@
-import React, { Component } from 'react'
+import React  from 'react'
 import {
     View,
     TouchableWithoutFeedback,
-    TouchableHighlight,
-    Text,
-    StyleSheet
 } from 'react-native'
 
 export const CNToolbarIcon = (props) => {
@@ -21,15 +18,16 @@ export const CNToolbarIcon = (props) => {
         selectedTag,
         buttonTypes,
         selectedBackgroundColor,
-    } = props    
+    } = props;
+
     let colorCondition = '';
     let backgroundColorCondition = '';
-    if (buttonTypes === 'style') {     
-        backgroundColorCondition = selectedStyles.indexOf(toolTypeText) >= 0 ? selectedBackgroundColor : backgroundColor;   
+    if (buttonTypes === 'style') {
+        backgroundColorCondition = selectedStyles.indexOf(toolTypeText) >= 0 ? selectedBackgroundColor : backgroundColor;
         colorCondition = selectedStyles.indexOf(toolTypeText) >= 0 ? selectedColor : color;
     }
-    else if (buttonTypes === 'tag') {    
-        backgroundColorCondition = selectedTag === toolTypeText ? selectedBackgroundColor : backgroundColor;    
+    else if (buttonTypes === 'tag') {
+        backgroundColorCondition = selectedTag === toolTypeText ? selectedBackgroundColor : backgroundColor;
         colorCondition = selectedTag === toolTypeText ? selectedColor : color
     }
     return (
@@ -52,4 +50,4 @@ export const CNToolbarIcon = (props) => {
             </View>
         </TouchableWithoutFeedback>
     )
-}
+};

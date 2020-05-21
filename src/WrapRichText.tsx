@@ -214,11 +214,12 @@ class WrapRichText extends Component<Props, State> {
         })
     };
 
-    UNSAFE_componentDidMount = () => {
+    componentDidMount = () => {
         if (this.props.autoFocus) {
-            this.editor && this.editor.content.onFocus()
+            this.editor && this.editor.focus()
         }
     };
+
     onStyleKeyPress = (toolType) => {
 
         if (toolType == 'image') {
