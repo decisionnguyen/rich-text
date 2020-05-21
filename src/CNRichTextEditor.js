@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
 import {
-    TextInput, View, Image,
-    ScrollView, Platform,
+    TextInput,
+    View,
+    Image,
+    ScrollView,
+    Platform,
+    StyleSheet,
     TouchableWithoutFeedback,
 } from 'react-native';
 import _ from 'lodash';
