@@ -123,7 +123,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         borderWidth: 1,
         borderColor: defaultSelectedBgColor,
-        borderRadius: 4,
         padding: 2,
         backgroundColor: '#fff',
     },

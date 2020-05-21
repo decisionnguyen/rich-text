@@ -14,7 +14,7 @@ const editorHTML = `
         }
         html, body { margin: 0; padding: 0;font-family: Arial, Helvetica, sans-serif; font-size:1em;}
         body {
-            padding-top: 0px;
+            padding-top: 5px;
             padding-bottom: 50px;
             height: 100%;
             overflow: hidden;
@@ -36,7 +36,6 @@ const editorHTML = `
             font-family: monospace;
             background-color: #eee;
             background: hsl(220, 80%, 90%); 
-           
         }
         pre {
             white-space: pre-wrap;
@@ -49,6 +48,7 @@ const editorHTML = `
         #editor {
            flex-grow: 1;
            height: 100%;
+           padding-top: 10px;
         }
 
         #editor:focus {
