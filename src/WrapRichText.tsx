@@ -501,6 +501,7 @@ class WrapRichText extends Component<Props, State> {
                                 onValueChanged={this.onValueChanged}
                                 onRemoveImage={this.onRemoveImage}
                                 placeholder={this.state.placeHolder}
+                                autoFocus={this.props.autoFocus}
                             />
                         </View>
                     </TouchableWithoutFeedback>
