@@ -296,6 +296,7 @@ export default class CNEditor extends Component {
                     renderError={(error) => console.log('error:', error)}
                     showsHorizontalScrollIndicator={false}
                     showsVerticalScrollIndicator={false}
+                    scrollEnabled={false}
                 />
             </View>
         );
