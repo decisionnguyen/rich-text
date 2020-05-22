@@ -97,7 +97,7 @@ const editorHTML = `
   autocapitalize="off"
   spellcheck="false"
   autocorrect="off" 
-  contenteditable placeholder="placeholder..." oninput="if(this.innerHTML.trim()==='<br>')this.innerHTML=''" ></div>
+  contenteditable placeholder="" oninput="if(this.innerHTML.trim()==='<br>')this.innerHTML=''" ></div>
     <script>
         (function(doc) {
             var editor = document.getElementById('editor');
