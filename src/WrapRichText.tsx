@@ -551,7 +551,6 @@ var styles = StyleSheet.create({
         paddingBottom: 1,
         alignItems: 'stretch',
         backgroundColor: '#fff',
-        paddingHorizontal: 20
 
     },
     editor: {},

@@ -50,11 +50,13 @@ const editorHTML = `
            height: 100%;
            padding-top: 10px;
            overflow-y: scroll;
+           padding-left: 20px;
+           padding-right: 20px;
         }
 
-        #editor::-webkit-scrollbar {
-           display: none;
-        }
+        /*#editor::-webkit-scrollbar {*/
+        /*   display: none;*/
+        /*}*/
 
         p {
             margin-top: 4px !important;
