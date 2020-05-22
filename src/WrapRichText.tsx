@@ -486,7 +486,7 @@ class WrapRichText extends Component<Props, State> {
             <KeyboardAvoidingView
                 enabled
                 style={styles.root}
-                behavior={'padding'}
+                behavior={IS_IOS ? 'padding' : undefined}
             >
                 <MenuProvider style={styles.container}>
                     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
