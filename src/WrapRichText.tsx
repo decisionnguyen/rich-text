@@ -15,11 +15,9 @@ import {
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 
-import CNRichTextEditor, {
-    CNToolbar,
-    getDefaultStyles,
-    getInitialObject,
-} from './index';
+import CNRichTextEditor from './CNEditor';
+import CNToolbar from './CNToolbar';
+import {convertToObject, convertToHtmlString, getInitialObject, getDefaultStyles} from './Convertors';
 
 import {
     Menu,
