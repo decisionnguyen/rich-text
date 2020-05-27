@@ -11,6 +11,7 @@ import {
     Platform,
     Image,
     TouchableOpacity,
+    ViewStyle
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 
@@ -44,8 +45,6 @@ const {SlideInMenu} = renderers;
 const IS_IOS = Platform.OS === 'ios';
 const {width, height} = Dimensions.get('window');
 const defaultStyles = getDefaultStyles();
-const defaultBackgroundColorBtn = 'aliceblue';
-const defaultSelectedBackgroundColorBtn = 'deepskyblue';
 const toolbarActionWidth = 28;
 
 interface Props {
@@ -55,7 +54,8 @@ interface Props {
     toolbarItem?: string[], // ['bold', 'italic', 'underline', 'lineThrough', 'h1', 'h2', 'ul', 'ol', 'image', 'color', 'P']
     onInsertImage?: (uri: string) => void,
     autoFocus?: boolean,
-
+    containerStyle?: ViewStyle,
+    textColor?: string
 }
 
 interface State {
@@ -502,6 +502,8 @@ class WrapRichText extends Component<Props, State> {
                                 onRemoveImage={this.onRemoveImage}
                                 placeholder={this.state.placeHolder}
                                 autoFocus={this.props.autoFocus}
+                                textColor={this.props.textColor || ""}
+                                containerStyle={this.props.containerStyle}
                             />
                         </View>
                     </TouchableWithoutFeedback>

@@ -290,7 +290,8 @@ export default class CNEditor extends Component {
                     allowFileAccessFromFileURLs={true}
                     keyboardDisplayRequiresUserAction={keyboardDisplayRequiresUserAction}
                     javaScriptEnabled={true}
-                    source={{html: htmlEditorString}}
+                    containerStyle={this.props.containerStyle}
+                    source={{ html: `${htmlEditorString} <style>body {color: ${this.props.textColor}</style>` }}
                     mixedContentMode='always'
                     onMessage={this.onMessage}
                     renderError={(error) => console.log('error:', error)}
@@ -308,6 +309,7 @@ let styles = StyleSheet.create({
         flex: 1,
     },
     webView: {
-        flexGrow: 1
+        flexGrow: 1,
+        backgroundColor: 'transparent',
     }
 });
