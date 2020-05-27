@@ -551,10 +551,7 @@ var styles = StyleSheet.create({
     },
     main: {
         flex: 1,
-        paddingBottom: 1,
         alignItems: 'stretch',
-        backgroundColor: '#fff',
-
     },
     editor: {},
     toolbarContainer: {
