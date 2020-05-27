@@ -121,14 +121,6 @@ const styles = StyleSheet.create({
     toolbarContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        padding: 2,
-        backgroundColor: '#fff',
-    },
-    separator: {
-        width: 2,
-        marginTop: 1,
-        marginBottom: 1,
-        backgroundColor: defaultSelectedBgColor,
     },
 });
 
