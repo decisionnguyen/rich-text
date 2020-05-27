@@ -55,7 +55,8 @@ interface Props {
     onInsertImage?: (uri: string) => void,
     autoFocus?: boolean,
     containerStyle?: ViewStyle,
-    textColor?: string
+    textColor?: string,
+    toolbarStyle?: ViewStyle,
 }
 
 interface State {
@@ -511,7 +512,7 @@ class WrapRichText extends Component<Props, State> {
                         this.state.iconSet.length
                             ? <View style={styles.toolbarContainer}>
                                 <CNToolbar
-                                    style={styles.toolbarStyle}
+                                    style={[styles.toolbarStyle, this.props.toolbarStyle]}
                                     iconSetContainerStyle={styles.iconSetContainerStyle}
                                     size={28}
                                     iconSet={newIconSet}

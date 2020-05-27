@@ -121,8 +121,6 @@ const styles = StyleSheet.create({
     toolbarContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        borderWidth: 1,
-        borderColor: defaultSelectedBgColor,
         padding: 2,
         backgroundColor: '#fff',
     },
