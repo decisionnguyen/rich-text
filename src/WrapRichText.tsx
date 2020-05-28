@@ -488,24 +488,22 @@ class WrapRichText extends Component<Props, State> {
                 behavior={IS_IOS ? 'padding' : undefined}
             >
                 <MenuProvider style={styles.container}>
-                    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                        <View style={styles.main}>
-                            <CNRichTextEditor
-                                ref={input => this.editor = input}
-                                onSelectedTagChanged={this.onSelectedTagChanged}
-                                onSelectedStyleChanged={this.onSelectedStyleChanged}
-                                initialHtml={this.state.value}
-                                style={styles.editor}
-                                styleList={this.customStyles}
-                                onValueChanged={this.onValueChanged}
-                                onRemoveImage={this.onRemoveImage}
-                                placeholder={this.state.placeHolder}
-                                autoFocus={this.props.autoFocus}
-                                textColor={this.props.textColor || ""}
-                                containerStyle={this.props.containerStyle}
-                            />
-                        </View>
-                    </TouchableWithoutFeedback>
+                    <View style={styles.main}>
+                        <CNRichTextEditor
+                            ref={input => this.editor = input}
+                            onSelectedTagChanged={this.onSelectedTagChanged}
+                            onSelectedStyleChanged={this.onSelectedStyleChanged}
+                            initialHtml={this.state.value}
+                            style={styles.editor}
+                            styleList={this.customStyles}
+                            onValueChanged={this.onValueChanged}
+                            onRemoveImage={this.onRemoveImage}
+                            placeholder={this.state.placeHolder}
+                            autoFocus={this.props.autoFocus}
+                            textColor={this.props.textColor || ""}
+                            containerStyle={this.props.containerStyle}
+                        />
+                    </View>
                     {
                         this.state.iconSet.length
                             ? <View style={styles.toolbarContainer}>
