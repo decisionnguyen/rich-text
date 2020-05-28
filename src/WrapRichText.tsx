@@ -232,30 +232,7 @@ class WrapRichText extends Component<Props, State> {
         })
     };
 
-    componentDidMount = () => {
-        if (this.props.autoFocus) {
-            this.editor && this.editor.focus()
-        }
-        Keyboard.addListener('keyboardWillShow', this.onKeyboardShowHide);
-        Keyboard.addListener('keyboardWillHide', this.onKeyboardShowHide);
-        StatusBar.setBarStyle('dark-content');
-    };
-
-    componentWillUnmount() {
-        Keyboard.removeListener('keyboardWillShow', this.onKeyboardShowHide);
-        Keyboard.removeListener('keyboardWillHide', this.onKeyboardShowHide);
-        StatusBar.setBarStyle('dark-content');
-    }
-
-    onKeyboardShowHide = () => {
-        setTimeout(() => {
-            StatusBar.setBarStyle('dark-content');
-        }, 100)
-    };
-
-
     onStyleKeyPress = (toolType) => {
-
         if (toolType == 'image') {
             return;
         } else {
