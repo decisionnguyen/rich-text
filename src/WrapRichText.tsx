@@ -50,8 +50,7 @@ interface Props {
     onValueChanged?: (value: string) => void,
     placeHolder?: string,
     toolbarItem?: string[], // ['bold', 'italic', 'underline', 'lineThrough', 'h1', 'h2', 'ul', 'ol', 'image', 'color', 'P']
-    onInsertImage?: (uri: string) => void,
-    autoFocus?: boolean,
+    onInsertImage?: (uri: string, callback: (value: string) => void) => void,    autoFocus?: boolean,
     containerStyle?: ViewStyle,
     textColor?: string,
     toolbarStyle?: ViewStyle,
@@ -282,11 +281,12 @@ class WrapRichText extends Component<Props, State> {
             } else if (response.customButton) {
                 console.log('User tapped custom button: ', response.customButton);
             } else {
-                if (this.props.onInsertImage) {
-                    new Promise(this.props.onInsertImage(response.uri)).then((url: string) => {
-                        this.insertImage(url);
-                    })
+                if (!this.props.onInsertImage) {
+                    return
                 }
+                this.props.onInsertImage(response.uri, (value: string) => {
+                    this.insertImage(typeof value === 'string' ? value : "");
+                });
             }
         });
     };
