@@ -228,7 +228,16 @@ class WrapRichText extends Component<Props, State> {
             value,
             placeHolder,
             iconSet: listIconSet
-        })
+        });
+        Keyboard.addListener("keyboardDidShow", this._keyboardDidShow);
+    };
+
+    UNSAFE_componentWillUnmount = () => {
+        Keyboard.removeAllListeners('keyboardDidShow', this._keyboardDidShow)
+    };
+
+    _keyboardDidShow = () => {
+        this.editor && this.editor.keyboardShow();
     };
 
     onStyleKeyPress = (toolType) => {

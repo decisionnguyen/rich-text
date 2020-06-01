@@ -208,6 +208,13 @@ export default class CNEditor extends Component {
         }
     }
 
+    keyboardShow = () => {
+        const jsonString = JSON.stringify({type: 'keyboardShow'});
+        if (this.webViewRef) {
+            this.webViewRef.postMessage(jsonString);
+        }
+    }
+
     focus = () => {
         const jsonString = JSON.stringify({type: 'editor', command: 'focus'});
 

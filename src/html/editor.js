@@ -88,7 +88,10 @@ const editorHTML = `
             margin-bottom: 4px !important;
         }
         
-        
+        h1 {
+            font-weight: normal;
+        }
+          
         #editor:focus {
           outline: 0px solid transparent;
         }
@@ -259,6 +262,11 @@ const editorHTML = `
               var msgData = JSON.parse(event.data);
               if(msgData.type === 'toolbar') {
                 applyToolbar(msgData.command, msgData.value || '');
+              }
+              else if (msgData.type === 'keyboardShow') {
+                   var selection = window.getSelection()
+                   var node = selection.focusNode.parentNode
+                   node.scrollIntoView(false)
               }
               else if(msgData.type === 'editor') {
                 switch (msgData.command) {
