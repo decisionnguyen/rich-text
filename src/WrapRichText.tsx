@@ -75,7 +75,7 @@ const styleBtnAction = {
 };
 const styleActionText = {
     fontSize: 20,
-    width: toolbarActionWidth,
+    minWidth: toolbarActionWidth,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
